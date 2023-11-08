@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.syano";
+option java_outer_classname = "Syano_url_shortener";
+option objc_class_prefix = "HLW";
+
+package com.syano;
+
+// import "google/protobuf/timestamp.proto";
+
+// Represents a URL entity with its associated attributes
+message Entity {
+  string longUrl = 2;            // The original long URL
+  string shortUrl = 3;           // The generated shortened URL
+  Timestamp createdAt = 4;       // Timestamp when the URL was created
+  Timestamp updatedAt = 5;       // Timestamp of the last update
+  // google.protobuf.Timestamp createdAt = 4;  // Timestamp when // option java_multiple_files = true;
+// option java_package = "com.syano";
+// option java_outer_classname = "Syano_url_shortener";
+// option objc_class_prefix = "HLW";the URL was created
+  // google.protobuf.Timestamp updatedAt = 5;  // Timestamp of the last update
+  int32 clickCount = 6;          // Number of times the shortened URL has been clicked
+  // google.protobuf.Timestamp expirationTime = 7;  // Expiration time for the shortened URL
+  string expirationTime = 7;  // Expiration time for the shortened URL
+}
+
+
+// Service for managing URL entities
+service UrlService {
+  // Create a new URL entity
+  rpc CreateUrl (CreateUrlRequest) returns (CreateUrlResponse);
+
+  // Retrieve a URL entity by its ID
+  rpc GetUrl (GetUrlRequest) returns (GetUrlResponse);
+
+  // Update an existing URL entity
+  rpc UpdateUrl (UpdateUrlRequest) returns (UpdateUrlResponse);
+
+  // Delete a URL entity by its ID
+  rpc DeleteUrl (DeleteUrlRequest) returns (DeleteUrlResponse);
+}
+
+// Request message for creating a new URL entity
+message CreateUrlRequest {
+  string longUrl = 1;
+  //  google.protobuf.Timestamp expirationTime = 2;
+  Timestamp expirationTime = 2;
+}
+
+// Response message for creating a new URL entity
+message CreateUrlResponse {
+  Entity entity = 1;
+}
+
+// Request message for retrieving a URL entity
+message GetUrlRequest {
+  string shortUrl = 1;
+}
+
+// Response message for retrieving a URL entity
+message GetUrlResponse {
+  string longUrl = 1;
+}
+
+// Request message for updating an existing URL entity
+message UpdateUrlRequest {
+  int32 id = 1;
+  string longUrl = 2;
+  string shortUrl = 3;
+  // google.protobuf.Timestamp expirationTime = 4;
+  Timestamp expirationTime = 4;
+}
+
+// Response message for updating an existing URL entity
+message UpdateUrlResponse {
+  Entity entity = 1;
+}
+
+// Request message for deleting a URL entity
+message DeleteUrlRequest {
+  string shortUrl = 1;
+}
+
+// Response message for deleting a URL entity
+message DeleteUrlResponse {
+  string status = 1;
+}
+
+message Timestamp{
+  int64 seconds = 1;
+  string time_zone = 2;
+}
