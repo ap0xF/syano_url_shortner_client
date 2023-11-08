@@ -1,3 +1,3 @@
 # syano_url_shortner_client
 
-A new Flutter project.
+Client side written in flutter for Url Shortener service
