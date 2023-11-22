@@ -29,6 +29,10 @@ class UrlServiceClient extends $grpc.Client {
       '/com.syano.UrlService/GetUrl',
       ($0.GetUrlRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.GetUrlResponse.fromBuffer(value));
+  static final _$getAllUrlsOfUser = $grpc.ClientMethod<$0.UserEmail, $0.GetShortUrlsResponse>(
+      '/com.syano.UrlService/GetAllUrlsOfUser',
+      ($0.UserEmail value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.GetShortUrlsResponse.fromBuffer(value));
   static final _$updateUrl = $grpc.ClientMethod<$0.UpdateUrlRequest, $0.UpdateUrlResponse>(
       '/com.syano.UrlService/UpdateUrl',
       ($0.UpdateUrlRequest value) => value.writeToBuffer(),
@@ -50,6 +54,10 @@ class UrlServiceClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$0.GetUrlResponse> getUrl($0.GetUrlRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getUrl, request, options: options);
+  }
+
+  $grpc.ResponseStream<$0.GetShortUrlsResponse> getAllUrlsOfUser($0.UserEmail request, {$grpc.CallOptions? options}) {
+    return $createStreamingCall(_$getAllUrlsOfUser, $async.Stream.fromIterable([request]), options: options);
   }
 
   $grpc.ResponseFuture<$0.UpdateUrlResponse> updateUrl($0.UpdateUrlRequest request, {$grpc.CallOptions? options}) {
@@ -80,6 +88,13 @@ abstract class UrlServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.GetUrlRequest.fromBuffer(value),
         ($0.GetUrlResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.UserEmail, $0.GetShortUrlsResponse>(
+        'GetAllUrlsOfUser',
+        getAllUrlsOfUser_Pre,
+        false,
+        true,
+        ($core.List<$core.int> value) => $0.UserEmail.fromBuffer(value),
+        ($0.GetShortUrlsResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.UpdateUrlRequest, $0.UpdateUrlResponse>(
         'UpdateUrl',
         updateUrl_Pre,
@@ -104,6 +119,10 @@ abstract class UrlServiceBase extends $grpc.Service {
     return getUrl(call, await request);
   }
 
+  $async.Stream<$0.GetShortUrlsResponse> getAllUrlsOfUser_Pre($grpc.ServiceCall call, $async.Future<$0.UserEmail> request) async* {
+    yield* getAllUrlsOfUser(call, await request);
+  }
+
   $async.Future<$0.UpdateUrlResponse> updateUrl_Pre($grpc.ServiceCall call, $async.Future<$0.UpdateUrlRequest> request) async {
     return updateUrl(call, await request);
   }
@@ -114,6 +133,7 @@ abstract class UrlServiceBase extends $grpc.Service {
 
   $async.Future<$0.CreateUrlResponse> createUrl($grpc.ServiceCall call, $0.CreateUrlRequest request);
   $async.Future<$0.GetUrlResponse> getUrl($grpc.ServiceCall call, $0.GetUrlRequest request);
+  $async.Stream<$0.GetShortUrlsResponse> getAllUrlsOfUser($grpc.ServiceCall call, $0.UserEmail request);
   $async.Future<$0.UpdateUrlResponse> updateUrl($grpc.ServiceCall call, $0.UpdateUrlRequest request);
   $async.Future<$0.DeleteUrlResponse> deleteUrl($grpc.ServiceCall call, $0.DeleteUrlRequest request);
 }

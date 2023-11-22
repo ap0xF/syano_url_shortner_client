@@ -17,6 +17,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 /// Represents a URL entity with its associated attributes
 class Entity extends $pb.GeneratedMessage {
   factory Entity({
+    $core.String? email,
     $core.String? longUrl,
     $core.String? shortUrl,
     Timestamp? createdAt,
@@ -25,6 +26,9 @@ class Entity extends $pb.GeneratedMessage {
     $core.String? expirationTime,
   }) {
     final $result = create();
+    if (email != null) {
+      $result.email = email;
+    }
     if (longUrl != null) {
       $result.longUrl = longUrl;
     }
@@ -50,6 +54,7 @@ class Entity extends $pb.GeneratedMessage {
   factory Entity.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Entity', package: const $pb.PackageName(_omitMessageNames ? '' : 'com.syano'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'email')
     ..aOS(2, _omitFieldNames ? '' : 'longUrl', protoName: 'longUrl')
     ..aOS(3, _omitFieldNames ? '' : 'shortUrl', protoName: 'shortUrl')
     ..aOM<Timestamp>(4, _omitFieldNames ? '' : 'createdAt', protoName: 'createdAt', subBuilder: Timestamp.create)
@@ -80,45 +85,54 @@ class Entity extends $pb.GeneratedMessage {
   static Entity getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Entity>(create);
   static Entity? _defaultInstance;
 
+  @$pb.TagNumber(1)
+  $core.String get email => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set email($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasEmail() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEmail() => clearField(1);
+
   @$pb.TagNumber(2)
-  $core.String get longUrl => $_getSZ(0);
+  $core.String get longUrl => $_getSZ(1);
   @$pb.TagNumber(2)
-  set longUrl($core.String v) { $_setString(0, v); }
+  set longUrl($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasLongUrl() => $_has(0);
+  $core.bool hasLongUrl() => $_has(1);
   @$pb.TagNumber(2)
   void clearLongUrl() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get shortUrl => $_getSZ(1);
+  $core.String get shortUrl => $_getSZ(2);
   @$pb.TagNumber(3)
-  set shortUrl($core.String v) { $_setString(1, v); }
+  set shortUrl($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasShortUrl() => $_has(1);
+  $core.bool hasShortUrl() => $_has(2);
   @$pb.TagNumber(3)
   void clearShortUrl() => clearField(3);
 
   @$pb.TagNumber(4)
-  Timestamp get createdAt => $_getN(2);
+  Timestamp get createdAt => $_getN(3);
   @$pb.TagNumber(4)
   set createdAt(Timestamp v) { setField(4, v); }
   @$pb.TagNumber(4)
-  $core.bool hasCreatedAt() => $_has(2);
+  $core.bool hasCreatedAt() => $_has(3);
   @$pb.TagNumber(4)
   void clearCreatedAt() => clearField(4);
   @$pb.TagNumber(4)
-  Timestamp ensureCreatedAt() => $_ensure(2);
+  Timestamp ensureCreatedAt() => $_ensure(3);
 
   @$pb.TagNumber(5)
-  Timestamp get updatedAt => $_getN(3);
+  Timestamp get updatedAt => $_getN(4);
   @$pb.TagNumber(5)
   set updatedAt(Timestamp v) { setField(5, v); }
   @$pb.TagNumber(5)
-  $core.bool hasUpdatedAt() => $_has(3);
+  $core.bool hasUpdatedAt() => $_has(4);
   @$pb.TagNumber(5)
   void clearUpdatedAt() => clearField(5);
   @$pb.TagNumber(5)
-  Timestamp ensureUpdatedAt() => $_ensure(3);
+  Timestamp ensureUpdatedAt() => $_ensure(4);
 
   /// google.protobuf.Timestamp createdAt = 4;  // Timestamp when // option java_multiple_files = true;
   /// option java_package = "com.syano";
@@ -126,21 +140,21 @@ class Entity extends $pb.GeneratedMessage {
   /// option objc_class_prefix = "HLW";the URL was created
   /// google.protobuf.Timestamp updatedAt = 5;  // Timestamp of the last update
   @$pb.TagNumber(6)
-  $core.int get clickCount => $_getIZ(4);
+  $core.int get clickCount => $_getIZ(5);
   @$pb.TagNumber(6)
-  set clickCount($core.int v) { $_setSignedInt32(4, v); }
+  set clickCount($core.int v) { $_setSignedInt32(5, v); }
   @$pb.TagNumber(6)
-  $core.bool hasClickCount() => $_has(4);
+  $core.bool hasClickCount() => $_has(5);
   @$pb.TagNumber(6)
   void clearClickCount() => clearField(6);
 
   /// google.protobuf.Timestamp expirationTime = 7;  // Expiration time for the shortened URL
   @$pb.TagNumber(7)
-  $core.String get expirationTime => $_getSZ(5);
+  $core.String get expirationTime => $_getSZ(6);
   @$pb.TagNumber(7)
-  set expirationTime($core.String v) { $_setString(5, v); }
+  set expirationTime($core.String v) { $_setString(6, v); }
   @$pb.TagNumber(7)
-  $core.bool hasExpirationTime() => $_has(5);
+  $core.bool hasExpirationTime() => $_has(6);
   @$pb.TagNumber(7)
   void clearExpirationTime() => clearField(7);
 }
@@ -150,6 +164,7 @@ class CreateUrlRequest extends $pb.GeneratedMessage {
   factory CreateUrlRequest({
     $core.String? longUrl,
     Timestamp? expirationTime,
+    $core.String? email,
   }) {
     final $result = create();
     if (longUrl != null) {
@@ -157,6 +172,9 @@ class CreateUrlRequest extends $pb.GeneratedMessage {
     }
     if (expirationTime != null) {
       $result.expirationTime = expirationTime;
+    }
+    if (email != null) {
+      $result.email = email;
     }
     return $result;
   }
@@ -167,6 +185,7 @@ class CreateUrlRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CreateUrlRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'com.syano'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'longUrl', protoName: 'longUrl')
     ..aOM<Timestamp>(2, _omitFieldNames ? '' : 'expirationTime', protoName: 'expirationTime', subBuilder: Timestamp.create)
+    ..aOS(3, _omitFieldNames ? '' : 'email')
     ..hasRequiredFields = false
   ;
 
@@ -211,6 +230,15 @@ class CreateUrlRequest extends $pb.GeneratedMessage {
   void clearExpirationTime() => clearField(2);
   @$pb.TagNumber(2)
   Timestamp ensureExpirationTime() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  $core.String get email => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set email($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasEmail() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearEmail() => clearField(3);
 }
 
 /// Response message for creating a new URL entity
@@ -521,10 +549,14 @@ class UpdateUrlResponse extends $pb.GeneratedMessage {
 class DeleteUrlRequest extends $pb.GeneratedMessage {
   factory DeleteUrlRequest({
     $core.String? shortUrl,
+    $core.String? email,
   }) {
     final $result = create();
     if (shortUrl != null) {
       $result.shortUrl = shortUrl;
+    }
+    if (email != null) {
+      $result.email = email;
     }
     return $result;
   }
@@ -534,6 +566,7 @@ class DeleteUrlRequest extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DeleteUrlRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'com.syano'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'shortUrl', protoName: 'shortUrl')
+    ..aOS(2, _omitFieldNames ? '' : 'email')
     ..hasRequiredFields = false
   ;
 
@@ -566,6 +599,15 @@ class DeleteUrlRequest extends $pb.GeneratedMessage {
   $core.bool hasShortUrl() => $_has(0);
   @$pb.TagNumber(1)
   void clearShortUrl() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get email => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set email($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasEmail() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearEmail() => clearField(2);
 }
 
 /// Response message for deleting a URL entity
@@ -681,6 +723,106 @@ class Timestamp extends $pb.GeneratedMessage {
   $core.bool hasTimeZone() => $_has(1);
   @$pb.TagNumber(2)
   void clearTimeZone() => clearField(2);
+}
+
+class UserEmail extends $pb.GeneratedMessage {
+  factory UserEmail({
+    $core.String? email,
+  }) {
+    final $result = create();
+    if (email != null) {
+      $result.email = email;
+    }
+    return $result;
+  }
+  UserEmail._() : super();
+  factory UserEmail.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UserEmail.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UserEmail', package: const $pb.PackageName(_omitMessageNames ? '' : 'com.syano'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'email')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UserEmail clone() => UserEmail()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UserEmail copyWith(void Function(UserEmail) updates) => super.copyWith((message) => updates(message as UserEmail)) as UserEmail;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static UserEmail create() => UserEmail._();
+  UserEmail createEmptyInstance() => create();
+  static $pb.PbList<UserEmail> createRepeated() => $pb.PbList<UserEmail>();
+  @$core.pragma('dart2js:noInline')
+  static UserEmail getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserEmail>(create);
+  static UserEmail? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get email => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set email($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasEmail() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEmail() => clearField(1);
+}
+
+class GetShortUrlsResponse extends $pb.GeneratedMessage {
+  factory GetShortUrlsResponse({
+    $core.String? shortUrl,
+  }) {
+    final $result = create();
+    if (shortUrl != null) {
+      $result.shortUrl = shortUrl;
+    }
+    return $result;
+  }
+  GetShortUrlsResponse._() : super();
+  factory GetShortUrlsResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetShortUrlsResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'GetShortUrlsResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'com.syano'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'shortUrl', protoName: 'shortUrl')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetShortUrlsResponse clone() => GetShortUrlsResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetShortUrlsResponse copyWith(void Function(GetShortUrlsResponse) updates) => super.copyWith((message) => updates(message as GetShortUrlsResponse)) as GetShortUrlsResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GetShortUrlsResponse create() => GetShortUrlsResponse._();
+  GetShortUrlsResponse createEmptyInstance() => create();
+  static $pb.PbList<GetShortUrlsResponse> createRepeated() => $pb.PbList<GetShortUrlsResponse>();
+  @$core.pragma('dart2js:noInline')
+  static GetShortUrlsResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetShortUrlsResponse>(create);
+  static GetShortUrlsResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get shortUrl => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set shortUrl($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasShortUrl() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearShortUrl() => clearField(1);
 }
 
 

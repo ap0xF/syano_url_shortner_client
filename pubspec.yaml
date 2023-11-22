@@ -7,14 +7,21 @@ environment:
   sdk: '>=3.1.5 <4.0.0'
 
 dependencies:
+  bcrypt: ^1.1.3
+  crypto: ^3.0.3
   flutter:
     sdk: flutter
   grpc: ^3.2.4
+  url_launcher: ^6.0.12
+  provider: ^6.0.1
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  protoc_plugin: any
+  
 
 flutter:
   uses-material-design: true

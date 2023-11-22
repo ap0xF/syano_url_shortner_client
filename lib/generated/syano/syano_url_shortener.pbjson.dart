@@ -17,6 +17,7 @@ import 'dart:typed_data' as $typed_data;
 const Entity$json = {
   '1': 'Entity',
   '2': [
+    {'1': 'email', '3': 1, '4': 1, '5': 9, '10': 'email'},
     {'1': 'longUrl', '3': 2, '4': 1, '5': 9, '10': 'longUrl'},
     {'1': 'shortUrl', '3': 3, '4': 1, '5': 9, '10': 'shortUrl'},
     {'1': 'createdAt', '3': 4, '4': 1, '5': 11, '6': '.com.syano.Timestamp', '10': 'createdAt'},
@@ -28,11 +29,11 @@ const Entity$json = {
 
 /// Descriptor for `Entity`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List entityDescriptor = $convert.base64Decode(
-    'CgZFbnRpdHkSGAoHbG9uZ1VybBgCIAEoCVIHbG9uZ1VybBIaCghzaG9ydFVybBgDIAEoCVIIc2'
-    'hvcnRVcmwSMgoJY3JlYXRlZEF0GAQgASgLMhQuY29tLnN5YW5vLlRpbWVzdGFtcFIJY3JlYXRl'
-    'ZEF0EjIKCXVwZGF0ZWRBdBgFIAEoCzIULmNvbS5zeWFuby5UaW1lc3RhbXBSCXVwZGF0ZWRBdB'
-    'IeCgpjbGlja0NvdW50GAYgASgFUgpjbGlja0NvdW50EiYKDmV4cGlyYXRpb25UaW1lGAcgASgJ'
-    'Ug5leHBpcmF0aW9uVGltZQ==');
+    'CgZFbnRpdHkSFAoFZW1haWwYASABKAlSBWVtYWlsEhgKB2xvbmdVcmwYAiABKAlSB2xvbmdVcm'
+    'wSGgoIc2hvcnRVcmwYAyABKAlSCHNob3J0VXJsEjIKCWNyZWF0ZWRBdBgEIAEoCzIULmNvbS5z'
+    'eWFuby5UaW1lc3RhbXBSCWNyZWF0ZWRBdBIyCgl1cGRhdGVkQXQYBSABKAsyFC5jb20uc3lhbm'
+    '8uVGltZXN0YW1wUgl1cGRhdGVkQXQSHgoKY2xpY2tDb3VudBgGIAEoBVIKY2xpY2tDb3VudBIm'
+    'Cg5leHBpcmF0aW9uVGltZRgHIAEoCVIOZXhwaXJhdGlvblRpbWU=');
 
 @$core.Deprecated('Use createUrlRequestDescriptor instead')
 const CreateUrlRequest$json = {
@@ -40,13 +41,15 @@ const CreateUrlRequest$json = {
   '2': [
     {'1': 'longUrl', '3': 1, '4': 1, '5': 9, '10': 'longUrl'},
     {'1': 'expirationTime', '3': 2, '4': 1, '5': 11, '6': '.com.syano.Timestamp', '10': 'expirationTime'},
+    {'1': 'email', '3': 3, '4': 1, '5': 9, '10': 'email'},
   ],
 };
 
 /// Descriptor for `CreateUrlRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createUrlRequestDescriptor = $convert.base64Decode(
     'ChBDcmVhdGVVcmxSZXF1ZXN0EhgKB2xvbmdVcmwYASABKAlSB2xvbmdVcmwSPAoOZXhwaXJhdG'
-    'lvblRpbWUYAiABKAsyFC5jb20uc3lhbm8uVGltZXN0YW1wUg5leHBpcmF0aW9uVGltZQ==');
+    'lvblRpbWUYAiABKAsyFC5jb20uc3lhbm8uVGltZXN0YW1wUg5leHBpcmF0aW9uVGltZRIUCgVl'
+    'bWFpbBgDIAEoCVIFZW1haWw=');
 
 @$core.Deprecated('Use createUrlResponseDescriptor instead')
 const CreateUrlResponse$json = {
@@ -120,12 +123,14 @@ const DeleteUrlRequest$json = {
   '1': 'DeleteUrlRequest',
   '2': [
     {'1': 'shortUrl', '3': 1, '4': 1, '5': 9, '10': 'shortUrl'},
+    {'1': 'email', '3': 2, '4': 1, '5': 9, '10': 'email'},
   ],
 };
 
 /// Descriptor for `DeleteUrlRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List deleteUrlRequestDescriptor = $convert.base64Decode(
-    'ChBEZWxldGVVcmxSZXF1ZXN0EhoKCHNob3J0VXJsGAEgASgJUghzaG9ydFVybA==');
+    'ChBEZWxldGVVcmxSZXF1ZXN0EhoKCHNob3J0VXJsGAEgASgJUghzaG9ydFVybBIUCgVlbWFpbB'
+    'gCIAEoCVIFZW1haWw=');
 
 @$core.Deprecated('Use deleteUrlResponseDescriptor instead')
 const DeleteUrlResponse$json = {
@@ -152,4 +157,28 @@ const Timestamp$json = {
 final $typed_data.Uint8List timestampDescriptor = $convert.base64Decode(
     'CglUaW1lc3RhbXASGAoHc2Vjb25kcxgBIAEoA1IHc2Vjb25kcxIbCgl0aW1lX3pvbmUYAiABKA'
     'lSCHRpbWVab25l');
+
+@$core.Deprecated('Use userEmailDescriptor instead')
+const UserEmail$json = {
+  '1': 'UserEmail',
+  '2': [
+    {'1': 'email', '3': 1, '4': 1, '5': 9, '10': 'email'},
+  ],
+};
+
+/// Descriptor for `UserEmail`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userEmailDescriptor = $convert.base64Decode(
+    'CglVc2VyRW1haWwSFAoFZW1haWwYASABKAlSBWVtYWls');
+
+@$core.Deprecated('Use getShortUrlsResponseDescriptor instead')
+const GetShortUrlsResponse$json = {
+  '1': 'GetShortUrlsResponse',
+  '2': [
+    {'1': 'shortUrl', '3': 1, '4': 1, '5': 9, '10': 'shortUrl'},
+  ],
+};
+
+/// Descriptor for `GetShortUrlsResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getShortUrlsResponseDescriptor = $convert.base64Decode(
+    'ChRHZXRTaG9ydFVybHNSZXNwb25zZRIaCghzaG9ydFVybBgBIAEoCVIIc2hvcnRVcmw=');
 
